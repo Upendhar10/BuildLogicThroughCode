@@ -1,80 +1,57 @@
-//*  Longest Word in a Sentence
+//*  Check Anagrams
 
-function LongestWord(sentence) {
-  let sentenceArr = sentence.split(" ");
+/*
+    - An anagram string refers to a pair of strings that contain the exact same characters in the same frequency, but their order can be different. 
+    - Essentially, one string can be rearranged to form the other.
 
-  let MaxCount = 0;
-  let LongWord = "";
+    - If the two input strings are identical to each other then, they are called "Trivial Anagrams"
 
-  for (let i = 0; i < sentenceArr.length; i++) {
-    if (sentenceArr[i].length > MaxCount) {
-      MaxCount = sentenceArr[i].length;
-      LongWord = sentenceArr[i];
-    }
+*/
+
+function CheckAnagrams(str1, str2) {
+  if (str1.length !== str2.length) {
+    return "Not Anagrams";
+  } else if (str1 === str2) {
+    return "Trivial Anagrams";
   }
-  return LongWord;
+
+  // Sort and compare
+  let sortedStr1 = str1.split("").sort().join("");
+  let sortedStr2 = str2.split("").sort().join("");
+
+  return sortedStr1 === sortedStr2 ? "Anagrams" : "Not Anagrams";
 }
 
-console.log(LongestWord("The quick brown fox"));
+console.log(CheckAnagrams("listen", "silent"));
 
-// ----------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 
-//*  Find the First Non-Repeating Character
+//* Check if Two Strings Have the Same Set of Characters
 
-function NonRepeatingChar(str) {
-  let frequency = {};
+/*
+  - If str2 is a rotation of str1, then appending str1 to itself will contain str2 as a substring.
+*/
 
-  let NRC = "";
-
-  for (let char of str) {
-    frequency[char] = (frequency[char] || 0) + 1;
+function ValidRotationStrings(str1, str2) {
+  if (str1.length !== str2.length) {
+    return "NO";
+  } else if (str1 === str2) {
+    return "YES";
   }
 
-  for (let ch of str) {
-    if (frequency[ch] == 1) {
-      NRC = ch;
-      break;
-    }
-  }
+  let concatenated = str1 + str1;
 
-  return NRC;
+  return concatenated.includes(str2) ? "YES" : "NO";
 }
 
-console.log(NonRepeatingChar("swiss"));
+console.log(ValidRotationStrings("abcdd", "cdab"));
 
-// ----------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 
-//*  Find All Substrings of a String
+//* Remove All Non-Alphabetic Characters
 
-function PrintAllSubstrings(str) {
-  let result = [];
-
-  for (let i = 0; i < str.length; i++) {
-    for (let j = i + 1; j <= str.length; j++) {
-      result.push(str.substring(i, j));
-    }
-  }
-
-  return result;
+function RemoveNonAlphabets(str) {
+  return str.replace(/[^a-zA-Z]/g, "");
 }
 
-function PrintAllSubstrings2(str) {
-  let result = [];
-
-  // add all single chat at once
-  for (let i = 0; i < str.length; i++) {
-    result.push(str.charAt(i));
-  }
-
-  // Add substrings of length and above in sequence
-  for (let i = 2; i <= str.length; i++) {
-    for (let j = 0; j <= str.length - i; j++) {
-      result.push(str.substring(j, j + i));
-    }
-  }
-
-  return result;
-}
-
-// console.log(PrintAllSubstrings("abc"));
-console.log(PrintAllSubstrings2("abc"));
+console.log(RemoveNonAlphabets("abc123!@#"));

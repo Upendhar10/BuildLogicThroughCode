@@ -1,22 +1,24 @@
-# DAY - 27
+# DAY 27
 
-1. **Longest Word in a Sentence**
+1. **Check Anagrams**
 
-   Find the longest word in a given sentence.
+   Determine if two strings are anagrams of each other.
 
-   - **Input: "The quick brown fox"**
-   - **Output: "quick"**
+   - **Input: "listen", "silent"**
+   - **Output: "Anagrams"**
 
-2. **Find the First Non-Repeating Character**
+2. **Check if Two Strings are Rotations of Each Other**
 
-   Identify the first character that does not repeat in the string.
+   Check if one string is a rotation of another.
 
-   - **Input: "swiss"**
-   - **Output: "w"**
+   NOTE : the order of characters matters in rotations.
 
-3. **Find All Substrings of a String**
+   - **Input: "abcd", "cdab"**
+   - **Output: "Yes"**
 
-   Print all possible substrings of a string.
+3. **Remove All Non-Alphabetic Characters**
 
-   - **Input: "abc"**
-   - **Output: ["a", "b", "c", "ab", "bc", "abc"]**
+   Remove all characters that are not letters.
+
+   - **Input: "abc123!@#"**
+   - **Output: "abc"**
